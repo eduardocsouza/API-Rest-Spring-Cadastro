@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
+<title>Cadastro Usuário</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet" href="/materialize.min.css" media="screen,projection" />
+
+</head>
+
+<body>
+<h3>Usuário Cadastrado:</h3>
+<h5><a class="waves-effect waves-light btn" href="/cadastroUsuario">Cadastrar Usuário</a></h5>
+<h5><a class="waves-effect waves-light btn" href="/listaUsuarios">Listar Usuários</a></h5>
+	<div th:each="user : ${userId}">
+		<div class="container">
+			<p>ID: <span th:text="${user.id}"></span></p>
+			<p>Nome: <span th:text="${user.nome}"></span></p>
+			<p>Email: <span th:text="${user.email}"></span></p>		
+		</div>
+	</div>
+	
+
+	<h3>Telefone</h3>
+	<form class="container" th:action="@{/cadastroUsuarioTel/{id}(id=${userId.id})}"  method="post">
+		<div class="row">
+			<div class="input-field col s6">
+				DDD: <input type="number" value="" name="ddd"/>		
+				Número: <input type="number" value="" name="numero"/>		
+				Tipo: <input type="text" value="" name="tipo"/>
+			</div>
+		</div>
+		<button class="waves-effect waves-light btn" type="submit">Adicionar</button>				
+	</form>
+	<script type="text/javascript" src="materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+</html>

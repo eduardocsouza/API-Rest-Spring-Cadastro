@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
+<title>Página Lista de Usuários</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.css"  media="screen,projection"/>
+<link type="text/css" rel="stylesheet" href="/materialize.min.css"  media="screen,projection"/>
+
+</head>
+<body>
+	<h2>Lista de Usuários</h2>
+	<h5><a class="waves-effect waves-light btn" href="/cadastroUsuario">Cadastrar Usuário</a></h5>
+	<table class="container">
+	<thead>
+		
+		<tr>
+			<th>ID</th>
+			<th>Nome</th>
+			<th>Email</th>
+		</tr>	
+	</thead>
+	<tbody>
+	<tr th:each="usuario : ${usuario}">
+		 <td th:text="${usuario.id}"></td>
+		 <td th:text="${usuario.nome}"></td>
+		 <td th:text=${usuario.email}></td>
+		 <td><a	th:href="@{/editarUsuario/{id}(id=${usuario.id})}" ><i class="material-icons">edit</i></a></td>
+		 <td><a	th:href="@{/excluirUsuario/{id}(id=${usuario.id})}" ><i class="material-icons">delete</i></a></td>
+		 <td><a	th:href="@{/adicionarTelefone/{id}(id=${usuario.id})}" ><i class="material-icons">contact_phone</i></a></td>
+	</tr>	
+	</tbody>	
+	</table>
+	
+<script type="text/javascript" src="materialize/js/materialize.js"></script>	
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	
+</body>
+</html>
